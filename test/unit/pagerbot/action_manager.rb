@@ -142,6 +142,18 @@ class ActionManager < Critic::MockedPagerDutyTest
         assert_includes(help_text, 'list')
         assert_includes(help_text, 'people')
       end
+
+      it 'should include help link if provided' do
+        @bot_settings[:help_message] = "https://example.com/help"
+        @manager = PagerBot::ActionManager.new(
+          :pagerduty => @pagerduty_settings,
+          :bot => @bot_settings)
+        @pagerduty = @manager.instance_variable_get("@pagerduty")
+
+        help_text = @manager.dispatch({type: 'help'}, event_data)[:message]
+
+        assert_includes(help_text, 'https://example.com/help')
+      end
     end
 
     describe 'manual' do

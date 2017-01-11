@@ -31,6 +31,14 @@
     </span>
   </p>
 
+  <p class="paragraph">
+    <label class="control-label">Help message:</label>
+    <input ng-model="bot.help_message" class="form-control short" />
+    <span class="input-description">
+      An optional extra message to be included in the bot help output. Useful for site specific details.
+    </span>
+  </p>
+
   <div class="paragraph" ng-if="bot.adapter != 'slack-rtm'">
     <label class="control-label">Channels:</label>
 

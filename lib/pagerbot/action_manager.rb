@@ -80,6 +80,7 @@ module PagerBot
       render(
         'help',
         loaded_plugins: plugin_manager.loaded_plugins,
+        help_message: @options[:bot][:help_message],
         name: @options[:bot][:name])
     end
 
